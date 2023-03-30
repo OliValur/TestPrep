@@ -1,0 +1,32 @@
+eval (Call (Var "f", Mult (Var "x", CstI 2)))
+["x", 15; "g", 7; "f", F ("g", "y", Add (Var "y", Var "z"), ["z", 9]), ...]
+
+// Lesa frá hægri til vinstri
+
+
+// Brjóta niður í þægilegri einingar að vinna með
+eval (
+    Call (Var "f", Mult (Var "x", CstI 2)) // Kallað í fallið f sem margfaldar x með 2
+)
+["x",           // Gildi hengt við
+15;             // ; þýðir value assigne-að
+"g",            // Gildi hengt við
+7;              // ; þýðir value assigne-að
+"f",            // Sett sem g því það þarf að assigna value við f þar sem ekkert gildi er sett á það
+F (                             
+    "g",        // Breyta inn í fallið                
+    "y",        // Breyta inn í fallið                
+    Add (Var "y", Var "z"),     
+    ["z", 9]    // Sér environment svo höndlað fyrst                   
+)                               
+]
+
+
+// Lausn:
+let z = 9 in
+    let g y = y + z in 
+        let f = g in 
+            let g = 7 in 
+                let x = 15 in 
+                    f(x * 2)
+

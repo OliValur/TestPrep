@@ -1,0 +1,13 @@
+(*
+    eval (Call (Var "f", Mult (Var "x", CstI 2)))
+    ["x", 15; "g", 7; "f", F ("g", "y", Add (Var "y", Var "z"), ["z", 9]), ...]
+    
+    x = 15
+    g = 7
+    
+    def f(g, y):
+       z = 9
+       return y + z
+    
+    f(7,(2*15)) = 30 + 9 = 39
+*)

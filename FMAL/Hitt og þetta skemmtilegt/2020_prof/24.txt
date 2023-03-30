@@ -1,0 +1,60 @@
+Suppose that // and ∗∗ are two binary infix operators whereby // binds stronger than ∗∗,
+that // is left-associative and ∗∗ is right-associative.
+Disambiguate the following expression for a reader that does not know about these conventions
+by parenthesizing all subexpressions of the following expression, variable names and the whole
+expression excepted:
+x // y // z // w ∗∗ a // b ∗∗ c
+
+
+Answer:
+    ->  x // y // z // w ∗∗ a // b ∗∗ c
+
+    ->  (x // y) // z // w ** a // b ** c           Left side prevails
+
+    ->  ((x // y) // z) // w ** a // b ** c         Left side prevails
+    
+    ->  (((x // y) // z) // w) ** a // b ** c       Left side prevails eða // sterkari in **
+    
+    ->  (((x // y) // z) // w) ** (a // b) ** c     Right side prevails
+    
+    ->  (((x // y) // z) // w) ** ((a // b) ** c)   Right side prevails
+
+
+
+// Breytum operator-unum
+x * y * z * w + a * b + c
+
+(x * y) * z * w + a * b + c
+
+((x * y) * z) * w + a * b + c
+
+(((x * y) * z) * w) + a * b + c
+
+(((x * y) * z) * w) + (a * b) + c
+
+// Muna að + er right-associative
+(((x * y) * z) * w) + ((a * b) + c)
+
+
+* er meira powerful en -
+
+x * y - z
+
+* er left associative
+(x * y) - z
+
+* er right associative
+x * (y - z)
+
+
+
+
+//TODO: Reyna eftir tíma
+** vera left-associative og sterkari en //
+// er right-associative
+
+x // y // z // w ∗∗ a // b ∗∗ c
+
+x // (y // z) // w ∗∗ a // b ∗∗ c
+
+x // (y // z) // w ∗∗ a // b ∗∗ c

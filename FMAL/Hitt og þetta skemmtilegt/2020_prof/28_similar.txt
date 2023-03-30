@@ -1,0 +1,34 @@
+eval (Call (Var "f", Div (Var "x", CstI 2)))
+["x", 30; "g", 12; "f", F ("g", "y", Subtract (Var "y", Var "z"), ["z", 11]), ...]
+
+// Lesa frá hægri til vinstri
+
+
+// Brjóta niður í þægilegri einingar að vinna með
+eval (
+    Call (Var "f", Div (Var "x", CstI 2)) // Kallað í fallið f sem margfaldar x með 2
+)
+["x",           // Gildi hengt við
+30;             // ; þýðir value assigne-að
+"g",            // Gildi hengt við
+12;              // ; þýðir value assigne-að
+"f",            // Sett sem g því það þarf að assigna value við f þar sem ekkert gildi er sett á það
+F (                             
+    "g",                        
+    "y",                        
+    Subtract (Var "y", Var "z"),     
+    ["z", 11]    // Sér environment svo höndlað fyrst                   
+)                               
+]
+
+
+// Lausn:
+let z = 11 in
+    let g y = y - z in 
+        let f = g in 
+            let g = 12 in 
+                let x = 30 in 
+                    f(x / 2)
+
+
+
